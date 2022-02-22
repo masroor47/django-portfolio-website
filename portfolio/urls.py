@@ -15,14 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import jobs.views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('jobs.urls')),
-
+    path('', include('jobs.urls'), name='home'),
+    path('jobs/<int:job_id>', include('jobs.urls'), name='detail'),
 ]
 
 
